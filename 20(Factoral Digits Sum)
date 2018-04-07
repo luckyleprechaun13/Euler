@@ -1,0 +1,14 @@
+def factoral(n): 
+    factoral_sum = n
+    while n > 1:
+        factoral_sum *=n-1
+        n -= 1
+    return factoral_sum    
+
+def sum_digits_factoral(x):
+    sum_digits = []
+    for y in str(x):
+        sum_digits.append(int(y))
+    return sum(sum_digits)
+
+print(sum_digits_factoral(factoral(100)))
