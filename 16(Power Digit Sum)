@@ -1,0 +1,7 @@
+power = 2 ** 1000
+power_digits = []
+
+for n in str(power):
+    power_digits.append(int(n))
+    
+print(sum(power_digits))
