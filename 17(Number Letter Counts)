@@ -1,0 +1,48 @@
+final_list = []
+ones_digit_list = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+teen_digit_list = ["", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"]
+tens_digit_list = ["", "ten ", "twenty ", "thirty ", "forty ", "fifty ", "sixty ", "seventy ", "eighty ", "ninety "]
+hundreds_digit_list = ["", ones_digit_list[1] + " hundred ", ones_digit_list[2] + " hundred ", ones_digit_list[3] + " hundred ", ones_digit_list[4] + " hundred ", ones_digit_list[5] + " hundred ", ones_digit_list[6] + " hundred ", ones_digit_list[7] + " hundred " ,ones_digit_list[8] + " hundred ", ones_digit_list[9] + " hundred "]
+thousands_digit_list = ["", ones_digit_list[1] + " thousand"]
+spelled_list = []
+
+for i in range(1,1001):
+    i = str(i)
+    if len(i) == 1: 
+        i = "000" + i
+        final_list.append(i)
+    elif len(i) == 2: 
+        i = "00" + i
+        final_list.append(i)
+    elif len(i) == 3: 
+        i = "0" + i
+        final_list.append(i)
+    else: 
+        final_list.append(i) 
+
+
+for number in final_list:
+    ones_digit = number[3]
+    tens_digit = number[2]
+    hundreds_digit = number[1]
+    thousands_digit = number[0]
+    if tens_digit == "1" and ones_digit != "0":
+        if hundreds_digit != "0":
+            number_spelled = thousands_digit_list[int(thousands_digit)] + hundreds_digit_list[int(hundreds_digit)] + "and " + teen_digit_list[int(ones_digit)]
+        else: 
+            number_spelled = thousands_digit_list[int(thousands_digit)] + hundreds_digit_list[int(hundreds_digit)] + teen_digit_list[int(ones_digit)]
+    else:
+        if number[2:4] == "00" or number[0] == "1" or number[0:2] == "00":
+            number_spelled = thousands_digit_list[int(thousands_digit)] + hundreds_digit_list[int(hundreds_digit)] + tens_digit_list[int(tens_digit)] + ones_digit_list[int(ones_digit)]
+        else: 
+            number_spelled = thousands_digit_list[int(thousands_digit)] + hundreds_digit_list[int(hundreds_digit)] + "and " + tens_digit_list[int(tens_digit)] + ones_digit_list[int(ones_digit)]
+    spelled_list.append(number_spelled)
+
+print(spelled_list)
+
+digit_count = 0
+for number in spelled_list: 
+    for i in number: 
+        if i != " ": 
+            digit_count += 1 
+print(digit_count)
