@@ -1,0 +1,21 @@
+triangle_list = []
+
+def triangle_number(x):
+    triangle = x * (x + 1) / 2 
+    triangle_list.append(int(triangle))
+
+for i in range(1,1000000):
+    triangle_number(i)
+
+divisor_list = [] 
+
+for number in triangle_list:
+    for i in range(1, int(number ** .5) + 1):
+        if number % i == 0: 
+            divisor_list.append(i)
+            
+    if len(divisor_list)>= 250:
+        print(number)
+        break
+    else: 
+        divisor_list = [] 
