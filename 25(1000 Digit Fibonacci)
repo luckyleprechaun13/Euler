@@ -1,0 +1,9 @@
+fibonacci_numbers = [0, 1]
+for i in range(2,7000):
+    fibonacci_numbers.append(fibonacci_numbers[i-1]+fibonacci_numbers[i-2])
+    
+for x in fibonacci_numbers:
+    if len(str(x)) >= 1000:
+        print(x)
+        print(fibonacci_numbers.index(x))
+        break
